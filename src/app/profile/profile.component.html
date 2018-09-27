@@ -1,0 +1,91 @@
+<form (ngSubmit)="onSubmit(profileForm.value)" [formGroup]="profileForm">
+    <div class="row">
+        <div class="col-sm-6 col-sm-offset-3">
+            <div class="form-group">
+                <label>Name</label>
+                <input type="text" class="form-control" formControlName="name" />
+                <div *ngIf="profileForm.get('name').invalid && (profileForm.get('name').dirty || profileForm.get('name').touched)" class="alert alert-danger">
+                    <p *ngIf="profileForm.get('name').errors.required">Name is required</p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" class="form-control" formControlName="email" />
+                <div *ngIf="profileForm.get('email').invalid && (profileForm.get('email').dirty || profileForm.get('email').touched)" class="alert alert-danger">
+                    <p *ngIf="profileForm.get('email').errors.required">Email is required</p>
+                    <p *ngIf="profileForm.get('email').errors.email">Email should be in a email format</p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Phone</label>
+                <input type="text" class="form-control" formControlName="phone" />
+                <div *ngIf="profileForm.get('phone').invalid && (profileForm.get('phone').dirty || profileForm.get('phone').touched)" class="alert alert-danger">
+                    <p *ngIf="profileForm.get('phone').errors.required">Phone number is required</p>
+                    <p *ngIf="profileForm.get('phone').errors.maxlength">Phone number should be 10 letters</p>
+                    <p *ngIf="profileForm.get('phone').errors.pattern">Phone number pattern should be in numbers format</p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" class="form-control" formControlName="password" />
+                <div *ngIf="profileForm.get('password').invalid && (profileForm.get('password').dirty || profileForm.get('password').touched)" class="alert alert-danger">
+                    Password is required
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Confirm Password</label>
+                <input type="password" class="form-control" formControlName="confirmedPassword" />
+                <div *ngIf="profileForm.get('confirmedPassword').invalid && (profileForm.get('confirmedPassword').dirty || profileForm.get('confirmedPassword').touched)" class="alert alert-danger">
+                    <p *ngIf="profileForm.get('confirmedPassword').errors.required">Confirm password is required</p>
+                    <p *ngIf="profileForm.get('confirmedPassword').errors?.MatchPassword">Confirm password should match</p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>City</label>
+                <select class="form-control" formControlName="city">
+                  <option *ngFor="let city of cities" value="{{city}}">{{city}}</option>
+                </select>
+                <div *ngIf="profileForm.get('city').invalid && profileForm.get('city').touched" class="alert alert-danger">
+                    Please select the city
+                </div>
+            </div>
+            <div class="form-group">
+                <label>State</label>
+                <select class="form-control" formControlName="state">
+                  <option *ngFor="let state of states" value="{{state}}">{{state}}</option>
+                </select>
+                <div *ngIf="profileForm.get('state').invalid && profileForm.get('state').touched" class="alert alert-danger">
+                    Please select the state
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Country</label>
+                <select class="form-control" formControlName="country">
+                  <option *ngFor="let country of countries" value="{{country}}">{{country}}</option>
+                </select>
+                <div *ngIf="profileForm.get('country').invalid && profileForm.get('country').touched" class="alert alert-danger">
+                    Please select the country
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Gender</label>
+                <br>
+                <label class="radio-inline"><input type="radio" name="gender" value="male" formControlName="gender" id="male"><span for="male">Male</span></label>
+                <label class="radio-inline"><input type="radio" name="gender" value="female" formControlName="gender" id="female"><span for="female">Female</span></label>
+                <div *ngIf="profileForm.get('gender').invalid && profileForm.get('gender').touched" class="alert alert-danger">
+                    Please select the gender
+                </div>
+            </div>
+            <div class="form-group">
+                <label>About You</label>
+                <textarea class="form-control" formControlName="aboutyou" rows="3"></textarea>
+                <div *ngIf="profileForm.get('aboutyou').invalid && (profileForm.get('aboutyou').dirty || profileForm.get('aboutyou').touched)" class="alert alert-danger">
+                    Please select the aboutyou
+                </div>
+            </div>
+            <div class="form-group text-center">
+                <button class="btn btn-primary" [disabled]="!profileForm.valid">SAVE</button>
+            </div>
+        </div>
+    </div>
+</form>
