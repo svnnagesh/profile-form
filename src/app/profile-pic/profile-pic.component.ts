@@ -15,6 +15,7 @@ export class ProfilePicComponent implements OnInit {
 
   imageChangedEvent: any = '';
   croppedImage: any = 'assets/images/vijay.jpg';
+  saveImg;
 
   fileChangeEvent(event: any): void {
     this.imageChangedEvent = event;
