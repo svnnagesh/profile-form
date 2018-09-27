@@ -1,9 +1,8 @@
 <div class="container">
     <div class="text-center">
-
         <div><img [src]="croppedImage" class="img-responsive img-plc" /></div>
         <div style="position:relative">
-            <image-cropper [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true" [aspectRatio]="4 / 3" [resizeToWidth]="128" format="png" (imageCroppedBase64)="imageCropped($event)" (imageLoaded)="imageLoaded()" (loadImageFailed)="loadImageFailed()"></image-cropper>
+            <image-cropper class="croping" [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true" [aspectRatio]="4 / 3" [resizeToWidth]="128" format="png" (imageCroppedBase64)="imageCropped($event)" (imageLoaded)="imageLoaded()" (loadImageFailed)="loadImageFailed()"></image-cropper>
             <div>
                 <label for="file-upload" class="custom-file-upload">
                     Upload Photo
